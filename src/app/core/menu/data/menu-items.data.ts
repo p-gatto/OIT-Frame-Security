@@ -1,4 +1,4 @@
-import { MenuItem } from "./models/menu-item.model";
+import { MenuItem } from "../models/menu-item.model";
 
 export const backofficeItems: MenuItem[] = [
     { icon: 'dashboard', label: 'Dashboard', route: '/admin/dashboard', section: 'backoffice' },

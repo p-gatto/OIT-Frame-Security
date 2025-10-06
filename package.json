@@ -1,6 +1,6 @@
 {
-  "name": "oit-frame",
-  "version": "0.5.0",
+  "name": "oit-frame-security",
+  "version": "0.6.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
