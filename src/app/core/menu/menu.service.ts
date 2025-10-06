@@ -13,7 +13,7 @@ export class MenuService {
 
   http = inject(HttpClient);
 
-  private readonly API_URL = 'https://localhost:7000/api';
+  private readonly API_URL = 'https://localhost:7070/api';
 
   backOfficeItems = signal<MenuItem[]>([]);
   frontOfficeItems = signal<MenuItem[]>([]);
