@@ -1,9 +1,9 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { MatListModule } from '@angular/material/list';
 
-import { MenuItem } from './menu-item.model';
+import { MenuItem } from './models/menu-item.model';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -14,18 +14,19 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule
   ],
   template: `
-    <h3 class="text-sm font-semibold text-gray-500 uppercase mb-2 px-4">
+   <h3 class="text-sm font-semibold text-gray-500 uppercase mb-2 px-4">
       {{menuTitle()}}
     </h3>
     <mat-nav-list>
-      @for (item of menuItems(); track $index) {
+      @for (item of menuItems(); track item.id) {
         <a mat-list-item              
           [routerLink]="item.route"
           routerLinkActive="bg-blue-50"
+          (click)="onItemClick()"
           class="hover:bg-gray-100 rounded transition-colors">
           <mat-icon matListItemIcon class="text-blue-600">{{item.icon}}</mat-icon>   
-        <span matListItemTitle>{{item.label}}</span>
-      </a>
+          <span matListItemTitle>{{item.label}}</span>
+        </a>
       }          
     </mat-nav-list>
   `,
@@ -34,4 +35,9 @@ import { MatIconModule } from '@angular/material/icon';
 export class MenuComponent {
   menuTitle = input('Menu anonimo');
   menuItems = input<MenuItem[]>([]);
+  itemClick = output();
+
+  onItemClick(): void {
+    this.itemClick.emit();
+  }
 }
