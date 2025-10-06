@@ -32,7 +32,7 @@ import { MenuService } from '../../menu/menu.service';
           <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
             <mat-icon class="text-white text-4xl">lock</mat-icon>
           </div>
-          <mat-card-title class="text-3xl font-bold text-gray-800">OIT Frame</mat-card-title>
+          <mat-card-title class="text-3xl font-bold text-gray-800">OIT Frame Security</mat-card-title>
           <mat-card-subtitle class="text-gray-600">Accedi al sistema</mat-card-subtitle>
         </mat-card-header>
 
@@ -127,7 +127,7 @@ export default class Login {
   isLoading = signal(false);
   errorMessage = signal('');
 
-  private returnUrl: string = '/';
+  private returnUrl = signal<string>('/');
 
   constructor() {
     this.loginForm = this.fb.group({
@@ -135,7 +135,7 @@ export default class Login {
       password: ['', Validators.required]
     });
 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+    this.returnUrl.set(this.route.snapshot.queryParams['returnUrl'] || '/home');
   }
 
   onSubmit(): void {
@@ -151,12 +151,12 @@ export default class Login {
           this.menuService.loadUserMenu().subscribe({
             next: () => {
               console.log('Menu caricato con successo');
-              this.router.navigate([this.returnUrl]);
+              this.router.navigate([this.returnUrl()]);
             },
             error: (error) => {
               console.error('Errore caricamento menu:', error);
               // Anche se il menu fallisce, naviga comunque
-              this.router.navigate([this.returnUrl]);
+              this.router.navigate([this.returnUrl()]);
             }
           });
         },

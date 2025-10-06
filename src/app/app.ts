@@ -72,23 +72,6 @@ import { MenuService } from './core/menu/menu.service';
 })
 export class AppComponent {
 
-  /* protected readonly appTitle = signal('OIT Frame');
-  protected readonly appName = signal('OIT Frame by signal');
-  protected readonly appVersion = signal('0.0.0');
-
-  @ViewChild('drawer') drawer!: MatDrawer;
-
-  boItems = signal<MenuItem[]>([...backofficeItems]);
-  foItems = signal<MenuItem[]>([...frontofficeItems]);
-
-  constructor() {
-    this.appVersion.set(version);
-  }
-
-  toggleSidebar(): void {
-    this.drawer.toggle();
-  } */
-
   authService = inject(AuthService);
   menuService = inject(MenuService);
 
