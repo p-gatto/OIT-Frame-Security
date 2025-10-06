@@ -92,8 +92,8 @@ export class AppComponent {
   authService = inject(AuthService);
   menuService = inject(MenuService);
 
-  protected readonly appTitle = signal('OIT Frame');
-  protected readonly appName = signal('OIT Frame by signal');
+  protected readonly appTitle = signal('OIT Frame Security');
+  protected readonly appName = signal('OIT Frame Security by signal');
   protected readonly appVersion = signal('0.0.0');
 
   @ViewChild('drawer') drawer?: MatDrawer;
